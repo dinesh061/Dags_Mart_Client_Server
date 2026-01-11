@@ -8,10 +8,10 @@ import cookieParser from 'cookie-parser';
 import fileUpload from 'express-fileupload';
 import dotenv from 'dotenv';
 import path from 'path'
-import {fileURLTooPath} from 'url';
+import {fileURLToPath} from 'url';
 
 
-const __filename= fileURLTooPath(import.meta.url)
+const __filename= fileURLToPath(import.meta.url)
 const __dirname= path.dirname(__filename)
 const app=express();
 
