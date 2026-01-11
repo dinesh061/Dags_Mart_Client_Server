@@ -1,9 +1,9 @@
 {
-  "name": "mern_ecommerce",
+  "name": "dags_mart",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "node backend/server/js",
+    "start": "node backend/serverjs",
     "dev": "nodemon backend/server.js",
     "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
   },
