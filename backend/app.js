@@ -6,7 +6,13 @@ import payment from './routes/paymentRoutes.js';
 import errorHandleMiddleware  from './middleware/error.js';
 import cookieParser from 'cookie-parser';
 import fileUpload from 'express-fileupload';
-import dotenv from 'dotenv'
+import dotenv from 'dotenv';
+import path from 'path'
+import {fileURLTooPath} from 'url';
+
+
+const __filename= fileURLTooPath(import.meta.url)
+const __dirname= path.dirname(__filename)
 const app=express();
 
 // Middleware
@@ -21,6 +27,13 @@ app.use("/api/v1",user)
 app.use("/api/v1",order)
 app.use("/api/v1",payment)
 
+app.use(express.static(path.join(__dirname,'../frontend/dist')))
+app.get("*",(req,res)=>{
+    res.sendFile(path.resolve(__dirname,'../frontend/dist/index.html'))
+})
+
 app.use(errorHandleMiddleware)
-dotenv.config({path:'backend/config/config.env'})
+if(process.env.NODE.ENV!=='PRODUCTION'){
+    dotenv.config({path:'backend/config/config.env'})
+}
 export default app;
